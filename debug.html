@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخيص مشروع مفاتيح</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .status-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #4CAF50;
+        }
+        .error {
+            border-left-color: #f44336;
+        }
+        .warning {
+            border-left-color: #ff9800;
+        }
+        .info {
+            border-left-color: #2196F3;
+        }
+        .check-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .check-item:last-child {
+            border-bottom: none;
+        }
+        .status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .success {
+            background: #4CAF50;
+            color: white;
+        }
+        .error-status {
+            background: #f44336;
+            color: white;
+        }
+        .warning-status {
+            background: #ff9800;
+            color: white;
+        }
+        .btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .code {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 تشخيص مشروع مفاتيح</h1>
+        
+        <div class="status-card info">
+            <h3>📊 حالة المشروع</h3>
+            <div class="check-item">
+                <span>حالة الخادم المحلي</span>
+                <span class="status" id="server-status">جاري التحقق...</span>
+            </div>
+            <div class="check-item">
+                <span>React App</span>
+                <span class="status success">✅ جاهز</span>
+            </div>
+            <div class="check-item">
+                <span>TypeScript</span>
+                <span class="status success">✅ جاهز</span>
+            </div>
+            <div class="check-item">
+                <span>Vite</span>
+                <span class="status success">✅ جاهز</span>
+            </div>
+        </div>
+
+        <div class="status-card warning">
+            <h3>⚠️ المشاكل المحتملة</h3>
+            <div class="check-item">
+                <span>اتصال Supabase</span>
+                <span class="status warning-status">⚠️ غير مُعد</span>
+            </div>
+            <div class="check-item">
+                <span>متغيرات البيئة</span>
+                <span class="status warning-status">⚠️ مفقودة</span>
+            </div>
+            <div class="check-item">
+                <span>خدمات الذكاء الاصطناعي</span>
+                <span class="status warning-status">⚠️ وضع محلي</span>
+            </div>
+        </div>
+
+        <div class="status-card">
+            <h3>🛠️ الحلول المقترحة</h3>
+            
+            <h4>1. إعداد متغيرات البيئة:</h4>
+            <div class="code">
+# انسخ الملف .env.example إلى .env
+cp .env.example .env
+
+# أو في Windows
+copy .env.example .env
+            </div>
+
+            <h4>2. تشغيل الخادم:</h4>
+            <div class="code">
+npm run dev
+            </div>
+
+            <h4>3. فتح المتصفح:</h4>
+            <div class="code">
+http://localhost:5173
+# أو
+http://localhost:8081
+            </div>
+        </div>
+
+        <div class="status-card">
+            <h3>📝 معلومات إضافية</h3>
+            <p><strong>المشروع:</strong> مفاتيح - مساعد المسلم الذكي الشامل</p>
+            <p><strong>الإصدار:</strong> 3.0.0</p>
+            <p><strong>التقنيات:</strong> React + TypeScript + Vite + TailwindCSS</p>
+            <p><strong>الميزات:</strong> مساعد آيات ذكي، أسئلة شرعية، قارئ قرآن، ورد يومي</p>
+        </div>
+
+        <div class="actions">
+            <button class="btn" onclick="window.open('http://localhost:5173', '_blank')">
+                🌐 فتح التطبيق (5173)
+            </button>
+            <button class="btn" onclick="window.open('http://localhost:8081', '_blank')">
+                🌐 فتح التطبيق (8081)
+            </button>
+            <button class="btn" onclick="location.reload()">
+                🔄 إعادة تحديث
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // فحص حالة الخادم
+        async function checkServerStatus() {
+            const ports = [5173, 8081, 3000];
+            const serverStatus = document.getElementById('server-status');
+            
+            for (const port of ports) {
+                try {
+                    const response = await fetch(`http://localhost:${port}`, { 
+                        method: 'HEAD',
+                        mode: 'no-cors'
+                    });
+                    serverStatus.textContent = `✅ يعمل على المنفذ ${port}`;
+                    serverStatus.className = 'status success';
+                    return;
+                } catch (error) {
+                    console.log(`المنفذ ${port} غير متاح`);
+                }
+            }
+            
+            serverStatus.textContent = '❌ غير متصل';
+            serverStatus.className = 'status error-status';
+        }
+
+        // تشغيل الفحص عند تحميل الصفحة
+        checkServerStatus();
+        
+        // إعادة الفحص كل 5 ثوانٍ
+        setInterval(checkServerStatus, 5000);
+    </script>
+</body>
+</html>
